@@ -46,7 +46,7 @@ Build and ship a thin Claude Code marketplace and plugin wrapper around the exis
 - `claude --plugin-dir ./plugins/sap-datasphere`
 - `/reload-plugins`
 - `/plugin marketplace add ./<path-to-this-repo>`
-- `/plugin install sap-datasphere@rahulsethi`
+- `/plugin install sap-datasphere@sethir-marketplace`
 
 ## Release rules
 - Run `/release` to bump versions, update CHANGELOG, and get the validation sequence.

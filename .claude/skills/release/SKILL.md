@@ -55,7 +55,7 @@ claude --plugin-dir ./plugins/sap-datasphere
 
 # 4. Marketplace install test (inside a Claude Code session)
 /plugin marketplace add ./<path-to-this-repo>
-/plugin install sap-datasphere@rahulsethi
+/plugin install sap-datasphere@sethir-marketplace
 /reload-plugins
 ```
 

@@ -14,6 +14,9 @@ __pycache__/
 # Node
 node_modules/
 
+# Session results (internal, not for public distribution)
+results/
+
 # OS
 .DS_Store
 Thumbs.db

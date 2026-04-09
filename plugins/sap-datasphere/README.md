@@ -53,7 +53,7 @@ Then inside Claude Code:
 
 ```text
 /plugin marketplace add <owner>/<repo>
-/plugin install sap-datasphere@rahulsethi
+/plugin install sap-datasphere@sethir-marketplace
 /reload-plugins
 ```
 

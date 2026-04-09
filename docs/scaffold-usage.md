@@ -78,7 +78,7 @@ Inside Claude Code:
 
 ```text
 /plugin marketplace add ./<path-to-this-repo>
-/plugin install sap-datasphere@rahulsethi
+/plugin install sap-datasphere@sethir-marketplace
 /reload-plugins
 ```
 
@@ -112,7 +112,7 @@ Run these in Claude Code after install:
 
 ```text
 /plugin marketplace add <owner>/<repo>
-/plugin install sap-datasphere@rahulsethi
+/plugin install sap-datasphere@sethir-marketplace
 ```
 
 - After real-user validation, submit through Anthropic’s plugin submission form.
