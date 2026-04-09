@@ -1,5 +1,8 @@
 {
   "name": "sethir-marketplace",
+  "metadata": {
+    "description": "Claude Code plugins for SAP and enterprise data workflows, maintained by Rahul Sethi."
+  },
   "owner": {
     "name": "Rahul Sethi"
   },
