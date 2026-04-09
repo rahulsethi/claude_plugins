@@ -1,0 +1,17 @@
+{
+  "name": "rahulsethi",
+  "owner": {
+    "name": "Rahul Sethi"
+  },
+  "plugins": [
+    {
+      "name": "sap-datasphere",
+      "source": "./plugins/sap-datasphere",
+      "description": "Thin Claude Code plugin wrapper for the SAP Datasphere MCP server.",
+      "version": "1.0.0-beta.2",
+      "author": {
+        "name": "Rahul Sethi"
+      }
+    }
+  ]
+}

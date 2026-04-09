@@ -1,0 +1,14 @@
+{
+  "sap-datasphere-local": {
+    "command": "sap-datasphere-mcp",
+    "args": [],
+    "env": {
+      "DATASPHERE_TENANT_URL": "${DATASPHERE_TENANT_URL}",
+      "DATASPHERE_OAUTH_TOKEN_URL": "${DATASPHERE_OAUTH_TOKEN_URL}",
+      "DATASPHERE_CLIENT_ID": "${DATASPHERE_CLIENT_ID}",
+      "DATASPHERE_CLIENT_SECRET": "${DATASPHERE_CLIENT_SECRET}",
+      "DATASPHERE_VERIFY_TLS": "${DATASPHERE_VERIFY_TLS}",
+      "DATASPHERE_MOCK_MODE": "${DATASPHERE_MOCK_MODE}"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Local dev overrides with real credentials (if you use hardcoded values)
+.env
+.env.local
+
+# Machine-specific Claude context (local paths, personal preferences)
+.claude.local.md
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

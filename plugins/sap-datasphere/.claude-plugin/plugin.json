@@ -1,0 +1,54 @@
+{
+  "name": "sap-datasphere",
+  "version": "1.0.0-beta.2",
+  "description": "Thin Claude Code wrapper around the SAP Datasphere MCP server with setup prompts, skills, and subagents.",
+  "author": {
+    "name": "Rahul Sethi"
+  },
+  "license": "MIT",
+  "keywords": [
+    "sap",
+    "datasphere",
+    "mcp",
+    "claude-code",
+    "analytics"
+  ],
+  "userConfig": {
+    "tenant_url": {
+      "title": "Tenant URL",
+      "description": "SAP Datasphere tenant base URL, for example https://your-tenant.eu10.hcs.cloud.sap",
+      "type": "string",
+      "sensitive": false
+    },
+    "oauth_token_url": {
+      "title": "OAuth Token URL",
+      "description": "OAuth token URL for the technical client",
+      "type": "string",
+      "sensitive": false
+    },
+    "client_id": {
+      "title": "Client ID",
+      "description": "OAuth client ID",
+      "type": "string",
+      "sensitive": false
+    },
+    "client_secret": {
+      "title": "Client Secret",
+      "description": "OAuth client secret",
+      "type": "string",
+      "sensitive": true
+    },
+    "verify_tls": {
+      "title": "Verify TLS",
+      "description": "1 to verify TLS certificates, 0 to disable verification for special proxy cases",
+      "type": "string",
+      "sensitive": false
+    },
+    "mock_mode": {
+      "title": "Mock Mode",
+      "description": "1 to enable mock mode for testing without a live tenant, 0 for live",
+      "type": "string",
+      "sensitive": false
+    }
+  }
+}
