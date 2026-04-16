@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^mcp__.*__hana_execute_query$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PLUGIN_ROOT}/scripts/hana_sql_guard.py\" --write-mode \"${user_config.write_mode}\" --work-schema \"${user_config.work_schema}\""
+          }
+        ]
+      }
+    ]
+  }
+}

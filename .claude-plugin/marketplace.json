@@ -15,6 +15,15 @@
       "author": {
         "name": "Rahul Sethi"
       }
+    },
+    {
+      "name": "sap-hana-cloud",
+      "source": "./plugins/sap-hana-cloud",
+      "description": "Thin Claude Code wrapper for hana-mcp-server with HANA discovery, reviewed writes, and hana_ml/PAL workflow skills.",
+      "version": "0.2.0-alpha.1",
+      "author": {
+        "name": "Rahul Sethi"
+      }
     }
   ]
 }

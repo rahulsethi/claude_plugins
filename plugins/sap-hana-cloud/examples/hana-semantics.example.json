@@ -1,0 +1,53 @@
+{
+  "tables": {
+    "CURATED.CUSTOMER_PROFILE": {
+      "description": "One row per customer with slowly changing profile attributes used for analytics and ML feature generation.",
+      "columns": {
+        "CUSTOMER_ID": {
+          "description": "Stable customer business key."
+        },
+        "SEGMENT_CODE": {
+          "description": "Current customer segment.",
+          "values": {
+            "A": "Enterprise",
+            "B": "Mid-market",
+            "C": "Retail",
+            "D": "Dormant"
+          }
+        },
+        "CUSTOMER_STATUS": {
+          "description": "Operational lifecycle status.",
+          "values": {
+            "1": "Active",
+            "2": "Blocked",
+            "3": "Pending review",
+            "9": "Closed"
+          }
+        }
+      }
+    },
+    "CURATED.CUSTOMER_EVENTS": {
+      "description": "Customer event stream used to create recency, frequency, and intensity features.",
+      "columns": {
+        "CUSTOMER_ID": {
+          "description": "Foreign key to the customer profile table."
+        },
+        "EVENT_TS": {
+          "description": "Event timestamp used for score-date filtering."
+        },
+        "EVENT_TYPE": {
+          "description": "Event classification used for behavioral features.",
+          "values": {
+            "LOGIN": "User login",
+            "ORDER": "Completed order",
+            "TICKET": "Support ticket",
+            "PAYMENT": "Payment received"
+          }
+        },
+        "AMOUNT": {
+          "description": "Event monetary amount where applicable."
+        }
+      }
+    }
+  }
+}

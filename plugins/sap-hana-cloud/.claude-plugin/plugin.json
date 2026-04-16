@@ -1,0 +1,136 @@
+{
+  "name": "sap-hana-cloud",
+  "version": "0.3.0-alpha.1",
+  "description": "Thin Claude Code wrapper around hana-mcp-server with HANA discovery, reviewed SQL writes, and hana_ml/PAL workflow skills.",
+  "author": {
+    "name": "Rahul Sethi"
+  },
+  "license": "Elastic-2.0",
+  "keywords": [
+    "sap",
+    "hana",
+    "hana-cloud",
+    "mcp",
+    "claude-code",
+    "sql",
+    "pal",
+    "hana-ml",
+    "feature-engineering",
+    "knowledge-graph",
+    "ontology",
+    "sparql",
+    "rdf",
+    "data-catalog",
+    "bi"
+  ],
+  "userConfig": {
+    "host": {
+      "title": "HANA Host",
+      "description": "SAP HANA or HANA Cloud SQL host name.",
+      "type": "string",
+      "sensitive": false
+    },
+    "port": {
+      "title": "HANA Port",
+      "description": "SQL port, for example 443 or 31013.",
+      "type": "string",
+      "sensitive": false
+    },
+    "user": {
+      "title": "HANA User",
+      "description": "Technical HANA database user for Claude Code.",
+      "type": "string",
+      "sensitive": false
+    },
+    "password": {
+      "title": "HANA Password",
+      "description": "Password for the HANA technical user.",
+      "type": "string",
+      "sensitive": true
+    },
+    "default_schema": {
+      "title": "Default Schema",
+      "description": "Default schema used when skills omit schema_name.",
+      "type": "string",
+      "sensitive": false
+    },
+    "connection_type": {
+      "title": "Connection Type",
+      "description": "auto, single_container, mdc_system, or mdc_tenant.",
+      "type": "string",
+      "sensitive": false
+    },
+    "instance_number": {
+      "title": "Instance Number",
+      "description": "Optional two-digit HANA instance number for MDC landscapes.",
+      "type": "string",
+      "sensitive": false
+    },
+    "database_name": {
+      "title": "Database Name",
+      "description": "Optional tenant database name for MDC tenant connections.",
+      "type": "string",
+      "sensitive": false
+    },
+    "ssl": {
+      "title": "Use SSL",
+      "description": "true or false. true is typical for HANA Cloud.",
+      "type": "string",
+      "sensitive": false
+    },
+    "encrypt": {
+      "title": "Encrypt Connection",
+      "description": "true or false. Usually true.",
+      "type": "string",
+      "sensitive": false
+    },
+    "validate_cert": {
+      "title": "Validate Certificate",
+      "description": "true or false. Leave true unless you have a known self-signed lab setup.",
+      "type": "string",
+      "sensitive": false
+    },
+    "max_result_rows": {
+      "title": "Max Result Rows",
+      "description": "Server-side per-page cap for query results, for example 50.",
+      "type": "string",
+      "sensitive": false
+    },
+    "semantics_path": {
+      "title": "Semantics File Path",
+      "description": "Optional local JSON file path for curated table and column meanings.",
+      "type": "string",
+      "sensitive": false
+    },
+    "semantics_url": {
+      "title": "Semantics URL",
+      "description": "Optional HTTPS URL for the same semantics JSON shape.",
+      "type": "string",
+      "sensitive": false
+    },
+    "metadata_catalog_database": {
+      "title": "Metadata Catalog Database",
+      "description": "Optional MDC catalog database name used by metadata tools when tables live in another tenant.",
+      "type": "string",
+      "sensitive": false
+    },
+    "log_level": {
+      "title": "Log Level",
+      "description": "error, warn, info, or debug.",
+      "type": "string",
+      "sensitive": false
+    },
+    "write_mode": {
+      "title": "Write Mode",
+      "description": "deny, ask, or allow. ask is the safest write-capable default.",
+      "type": "string",
+      "sensitive": false
+    },
+    "work_schema": {
+      "title": "Work Schema",
+      "description": "Recommended schema for feature tables, staging tables, and PAL outputs. Skills and hooks refer to this value.",
+      "type": "string",
+      "sensitive": false
+    }
+  }
+}

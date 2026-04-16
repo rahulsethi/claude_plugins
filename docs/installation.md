@@ -1,96 +1,141 @@
-# Installation Guide — sap-datasphere Plugin
+# Installation Overview
 
-## Prerequisites
+This page summarises all installation methods for the `sethir-marketplace` plugins. For full details, prerequisites, and configuration references, see the plugin-specific guides:
 
-### 1. Claude Code
-Install or update to the latest version:
-```bash
-npm install -g @anthropic-ai/claude-code
-```
-
-### 2. SAP Datasphere MCP server
-The plugin launches `sap-datasphere-mcp` as a managed MCP process. Install it before adding the plugin:
-
-```bash
-pip install mcp-sap-datasphere-server
-# or with pipx (recommended for CLI tools)
-pipx install mcp-sap-datasphere-server
-```
-
-Verify the CLI is on your PATH:
-```bash
-sap-datasphere-mcp --version
-```
-
-### 3. SAP Datasphere OAuth client
-You need a technical user OAuth client from BTP Cockpit with:
-- Client ID
-- Client Secret
-- Token URL (`https://<tenant>.authentication.<region>.hana.ondemand.com/oauth/token`)
+- [SAP Datasphere — full guide](sap-datasphere.md)
+- [SAP HANA Cloud — full guide](sap-hana-cloud.md)
 
 ---
 
-## Install from GitHub marketplace
+## Prerequisites summary
+
+| Requirement | sap-datasphere | sap-hana-cloud |
+|-------------|----------------|----------------|
+| Claude Code | ✓ | ✓ |
+| Python + `mcp-sap-datasphere-server` | ✓ | — |
+| Node.js 18+ | — | ✓ |
+| SAP Datasphere OAuth client | ✓ | — |
+| HANA technical user | — | ✓ |
+| `CATALOG READ` system privilege | — | For SYS catalog queries (views, FK discovery, lineage, ontology) |
+| Python + `hana-ml` (optional) | — | For ML generation only |
+| HANA Graph Engine (optional) | — | For SPARQL endpoint; SQL-on-TRIPLES works without it |
+
+---
+
+## Method 1 — From GitHub marketplace (recommended for both plugins)
 
 Open a Claude Code session and run:
 
-```text
+```
 /plugin marketplace add rahulsethi/claude_plugins
+```
+
+Then install the plugin you want:
+
+```
 /plugin install sap-datasphere@sethir-marketplace
+```
+```
+/plugin install sap-hana-cloud@sethir-marketplace
+```
+
+Reload:
+
+```
 /reload-plugins
 ```
 
-Claude will prompt for the following configuration values:
-
-| Field | Example |
-|-------|---------|
-| Tenant URL | `https://your-tenant.eu10.hcs.cloud.sap` |
-| OAuth Token URL | `https://your-tenant.authentication.eu10.hana.ondemand.com/oauth/token` |
-| Client ID | from BTP Cockpit OAuth client |
-| Client Secret | from BTP Cockpit OAuth client (stored encrypted) |
-| Verify TLS | `1` (recommended) |
-| Mock Mode | `0` for live, `1` for offline testing |
-
-Values are stored in Claude's secure plugin config store. Nothing is written to disk.
+Claude Code will prompt you to enter configuration values (connection credentials, etc.). These are stored securely in Claude's plugin config store — not in any file on disk.
 
 ---
 
-## First-run verification
+## Method 2 — From local clone
 
-After install, confirm the plugin is working:
+Clone this repository, then point Claude at it as a local marketplace:
 
-```text
-/sap-datasphere:tenant-recon
+```bash
+git clone https://github.com/rahulsethi/claude_plugins
+cd claude_plugins
 ```
 
-This skill runs diagnostics, lists spaces, and summarises a promising space.
+Inside Claude Code opened in the cloned directory:
+
+```
+/plugin marketplace add ./
+/plugin install sap-datasphere@sethir-marketplace
+/plugin install sap-hana-cloud@sethir-marketplace
+/reload-plugins
+```
 
 ---
 
-## Update credentials
+## Method 3 — Direct plugin-dir (single session, no marketplace)
 
-```text
+Load a plugin directly without installing it through a marketplace. Useful for testing or for users who do not want marketplace registration.
+
+```bash
+# For SAP Datasphere:
+claude --plugin-dir ./plugins/sap-datasphere
+
+# For SAP HANA Cloud:
+claude --plugin-dir ./plugins/sap-hana-cloud
+```
+
+Set credentials as shell environment variables before launching. See the full credential lists in each plugin guide.
+
+---
+
+## Method 4 — npx MCP server only (sap-hana-cloud, no plugin wrapper)
+
+If you want the raw HANA MCP tools without the plugin's skills, agents, or write guard — for example, to use `hana-mcp-server` alongside your own prompts:
+
+```bash
+claude mcp add sap-hana-cloud npx -y hana-mcp-server
+```
+
+Then configure credentials in Claude Code's MCP environment settings. This provides direct access to the HANA MCP tools (`hana_list_schemas`, `hana_describe_table`, `hana_execute_query`, etc.) without the plugin layer.
+
+> **Note:** Without the plugin, the write guard hook is not active. All SQL submitted via `hana_execute_query` will execute without interception, including destructive statements. The knowledge graph skills, ontology pipeline, and all other plugin skills are also unavailable. Use Method 1, 2, or 3 to get the full plugin.
+
+---
+
+## Managing credentials after install
+
+```
 /plugin config sap-datasphere
+/plugin config sap-hana-cloud
 ```
 
 ---
 
-## Uninstall
+## Updating plugins
 
-```text
+```
+/plugin update sap-datasphere@sethir-marketplace
+/plugin update sap-hana-cloud@sethir-marketplace
+/reload-plugins
+```
+
+---
+
+## Uninstalling
+
+```
 /plugin uninstall sap-datasphere
+/plugin uninstall sap-hana-cloud
 ```
-
-This removes the plugin and all stored credentials.
 
 ---
 
-## Troubleshooting
+## Troubleshooting quick reference
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `sap-datasphere-mcp: command not found` | CLI not installed or not on PATH | `pip install mcp-sap-datasphere-server` |
-| `401 Unauthorized` | Wrong client ID or secret | `/plugin config sap-datasphere` |
-| TLS handshake errors | Corporate TLS-inspection proxy | Set Verify TLS to `0` |
-| Mock responses in live session | Mock Mode left at `1` | `/plugin config sap-datasphere` → set Mock Mode to `0` |
-| Plugin not found after install | Plugin cache not refreshed | `/reload-plugins` |
+| Symptom | Fix |
+|---------|-----|
+| Plugin not found after install | `/reload-plugins` |
+| Skills not showing in `/help` | Ensure plugin is listed under an active marketplace |
+| Connection refused or timeout | Check host, port, and network access |
+| `sap-datasphere-mcp: command not found` | `pip install mcp-sap-datasphere-server` |
+| `npx: command not found` (HANA) | Install Node.js 18+ |
+| Credentials rejected | `/plugin config <plugin-name>` and re-enter |
+
+Full troubleshooting: [sap-datasphere.md#troubleshooting](sap-datasphere.md#troubleshooting) · [sap-hana-cloud.md#troubleshooting](sap-hana-cloud.md#troubleshooting)

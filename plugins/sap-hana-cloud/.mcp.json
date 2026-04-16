@@ -1,0 +1,29 @@
+{
+  "sap-hana-cloud": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "hana-mcp-server"
+    ],
+    "env": {
+      "HANA_HOST": "${user_config.host}",
+      "HANA_PORT": "${user_config.port}",
+      "HANA_USER": "${user_config.user}",
+      "HANA_PASSWORD": "${user_config.password}",
+      "HANA_SCHEMA": "${user_config.default_schema}",
+      "HANA_CONNECTION_TYPE": "${user_config.connection_type}",
+      "HANA_INSTANCE_NUMBER": "${user_config.instance_number}",
+      "HANA_DATABASE_NAME": "${user_config.database_name}",
+      "HANA_SSL": "${user_config.ssl}",
+      "HANA_ENCRYPT": "${user_config.encrypt}",
+      "HANA_VALIDATE_CERT": "${user_config.validate_cert}",
+      "HANA_MAX_RESULT_ROWS": "${user_config.max_result_rows}",
+      "HANA_SEMANTICS_PATH": "${user_config.semantics_path}",
+      "HANA_SEMANTICS_URL": "${user_config.semantics_url}",
+      "HANA_METADATA_CATALOG_DATABASE": "${user_config.metadata_catalog_database}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "ENABLE_FILE_LOGGING": "false",
+      "ENABLE_CONSOLE_LOGGING": "false"
+    }
+  }
+}

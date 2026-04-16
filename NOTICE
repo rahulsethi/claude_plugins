@@ -1,0 +1,84 @@
+NOTICE
+======
+
+sethir-marketplace — Claude Code Plugin Marketplace
+Copyright (c) 2024-2026 Rahul Sethi. All rights reserved.
+
+This software is licensed under the Elastic License 2.0.
+See the LICENSE file in the root of this repository for full terms.
+
+---
+
+Attribution Requirements
+------------------------
+
+Any copy, fork, or derivative of this software — including modified
+skill files, agent definitions, hook scripts, or plugin manifests —
+must retain the following attribution in a visible location (such as
+the repository README, plugin description, or application About page):
+
+    Based on sethir-marketplace by Rahul Sethi
+    https://github.com/rahulsethi/claude_plugins
+    Licensed under the Elastic License 2.0
+
+Removing or obscuring this attribution is a violation of the license
+terms and will cause your license to terminate automatically.
+
+---
+
+Original Author
+---------------
+
+Rahul Sethi
+https://github.com/rahulsethi
+
+Plugins covered by this notice:
+
+  sap-hana-cloud     (v0.2.0-alpha.1)
+    Skills: 44 | Agents: 13
+    Capabilities: schema discovery, reviewed writes, ontology/KG pipeline,
+                  HANA SPARQL-compatible triple store, BI design, hana_ml/PAL
+
+  sap-datasphere     (v1.0.0-beta.2)
+    Skills: 20 | Agents: 5
+    Capabilities: read-only Datasphere tenant exploration, KPI discovery,
+                  data quality, lineage
+
+---
+
+Third-Party Acknowledgements
+-----------------------------
+
+This repository wraps the following independently licensed MCP servers.
+These are NOT part of this codebase and are fetched at runtime only:
+
+  hana-mcp-server
+    Author:  HatriGt (https://github.com/HatriGt)
+    Package: hana-mcp-server (npm)
+    License: MIT
+    URL:     https://github.com/HatriGt/hana-mcp-server
+
+  mcp-sap-datasphere-server
+    Package: mcp-sap-datasphere-server (PyPI)
+    License: MIT
+    URL:     https://github.com/rahulsethi/SAPDatasphereMCP
+
+SAP, SAP HANA, SAP Datasphere, and related product names are trademarks
+of SAP SE. This project is not affiliated with or endorsed by SAP SE.
+
+Claude and Claude Code are products of Anthropic, PBC. This marketplace
+is an independent third-party plugin collection and is not affiliated
+with or endorsed by Anthropic.
+
+---
+
+Commercial Licensing
+--------------------
+
+To use this software in a way not permitted by the Elastic License 2.0
+(for example, to provide it as a managed service, embed it in a
+commercial product, or redistribute it under different terms), contact:
+
+    rahulsethi0206@gmail.com or rahulsethi@github
+
+A commercial license agreement will be required before such use begins.
